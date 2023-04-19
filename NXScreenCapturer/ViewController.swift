@@ -7,11 +7,19 @@
 
 import UIKit
 import ReplayKit
+import WebKit
 
 
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var webView: WKWebView! {
+        didSet {
+            webView.load(.init(url: .init(string: "https://www.toutiao.com/video/6923901776512942599/?log_from=63fd615683f0d_1681913305384")!))
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -58,24 +66,8 @@ class ViewController: UIViewController {
 extension ViewController {
     
     func handleVideoSampleBuffer(_ sampleBuffer: CMSampleBuffer) {
-        var rotation : Int = 0
-        if let orientationAttachment = CMGetAttachment(sampleBuffer, key: RPVideoSampleOrientationKey as CFString, attachmentModeOut: nil) as? NSNumber {
-            if let orientation = CGImagePropertyOrientation(rawValue: orientationAttachment.uint32Value) {
-                switch orientation {
-                case .up,    .upMirrored:    rotation = 0
-                case .down,  .downMirrored:  rotation = 180
-                case .left,  .leftMirrored:  rotation = 90
-                case .right, .rightMirrored: rotation = 270
-                default:   break
-                }
-            }
-        }
-        print("rotation = \(rotation)")
-        
+
     }
-    
-    
-    
     
 }
 

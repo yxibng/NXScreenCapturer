@@ -16,6 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ke-FY-a96">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0n0-IM-XjX">
                                 <rect key="frame" x="167" y="391.66666666666669" width="59.333333333333343" height="68.666666666666686"/>
                                 <subviews>
@@ -42,9 +50,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0n0-IM-XjX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ha0-06-kYi"/>
+                            <constraint firstItem="4Ke-FY-a96" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="IAr-7B-lgN"/>
+                            <constraint firstItem="4Ke-FY-a96" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SMA-6x-aOa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4Ke-FY-a96" secondAttribute="trailing" id="XET-2b-eaj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Ke-FY-a96" secondAttribute="bottom" id="bxi-FV-6fn"/>
                             <constraint firstItem="0n0-IM-XjX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mke-CR-vyz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="4Ke-FY-a96" id="mTg-we-Rhx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
