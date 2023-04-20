@@ -8,16 +8,17 @@
 #import "NXManager.h"
 #import "TSHardwareEncoder.h"
 #import "flv-muxer.h"
+#import "flv-writer.h"
 
 static int _flv_muxer_handler (void* param, int type, const void* data, size_t bytes, uint32_t timestamp);
+static int _flv_writer_onwrite(void* param, const struct flv_vec_t* vec, int n);
 
 
 
 @interface NXManager ()<TSHardwareEncoderDelegate>
 {
     @public
-    
-    FILE *_flvFile;
+    void *_flvWriter;
     int64_t _startVideoTimestamp;
     BOOL _hasAvccHeaderWriten;
     flv_muxer_t *_muxer;
@@ -100,15 +101,22 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     
     NXManager *manager = (__bridge NXManager *)(param);
     
-    if (!manager->_flvFile) {
+    if (!manager->_flvWriter) {
         
         NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"video.flv"];
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
         [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
-        manager->_flvFile = fopen([path cStringUsingEncoding:NSUTF8StringEncoding], "wb");
+        
+        NSLog(@"path = %@",path);
+        manager->_flvWriter = flv_writer_create1([path cStringUsingEncoding:NSUTF8StringEncoding], 0, 1);
     }
-    fwrite(data, 1, bytes, manager->_flvFile);
+    
+    flv_writer_input(manager->_flvWriter, 9, data, bytes, timestamp);
     
     return 0;
 }
 
+static int _flv_writer_onwrite(void* param, const struct flv_vec_t* vec, int n) {
+    
+    return 0;
+}

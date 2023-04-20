@@ -20,6 +20,13 @@ struct flv_vec_t
 typedef int (*flv_writer_onwrite)(void* param, const struct flv_vec_t* vec, int n);
 
 void* flv_writer_create(const char* file);
+
+
+/// @param[in] audio 1-has audio, 0-don't has audio
+/// @param[in] video 1-has video, 0-don't has video
+void* flv_writer_create1(const char* file, int audio, int video);
+
+
 /// @param[in] audio 1-has audio, 0-don't has audio
 /// @param[in] video 1-has video, 0-don't has video
 void* flv_writer_create2(int audio, int video, flv_writer_onwrite onwrite, void* param);
