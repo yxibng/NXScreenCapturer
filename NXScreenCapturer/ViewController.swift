@@ -42,10 +42,10 @@ class ViewController: UIViewController {
                 self .handleVideoSampleBuffer(sampleBuffer)
                 break
             case .audioApp:
-                print("audioApp = \(sampleBuffer)")
+//                print("audioApp = \(sampleBuffer)")
                 break
             case .audioMic:
-                print("audioMic = \(sampleBuffer)")
+//                print("audioMic = \(sampleBuffer)")
                 break
             @unknown default:
                 fatalError()
@@ -66,7 +66,9 @@ class ViewController: UIViewController {
 extension ViewController {
     
     func handleVideoSampleBuffer(_ sampleBuffer: CMSampleBuffer) {
-
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        let timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer).seconds * 1000
+        NXManager.shared().handleVideoPixelBuffer(pixelBuffer, timestamp: Int64(timestamp))
     }
     
 }

@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @class TSHardwareEncoder;
+
 @protocol TSHardwareEncoderDelegate <NSObject>
 
 - (void)encoder:(TSHardwareEncoder *)encoder gotEncoderData:(uint8_t *)data length:(int)length iskey:(BOOL)iskey timestamp:(int64_t)timestamp;

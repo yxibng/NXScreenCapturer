@@ -7,6 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8610415429F12150005DB656 /* NXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8610415329F12150005DB656 /* NXManager.m */; };
+		8610418C29F15DA3005DB656 /* aom-av1.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417329F15DA3005DB656 /* aom-av1.c */; };
+		8610418D29F15DA3005DB656 /* mpeg4-mp4toannexb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417429F15DA3005DB656 /* mpeg4-mp4toannexb.c */; };
+		8610418E29F15DA3005DB656 /* vvc-annexbtomp4.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417529F15DA3005DB656 /* vvc-annexbtomp4.c */; };
+		8610418F29F15DA3005DB656 /* mp3-header.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417629F15DA3005DB656 /* mp3-header.c */; };
+		8610419029F15DA3005DB656 /* flv-writer.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417729F15DA3005DB656 /* flv-writer.c */; };
+		8610419129F15DA3005DB656 /* amf0.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417829F15DA3005DB656 /* amf0.c */; };
+		8610419229F15DA3005DB656 /* mpeg4-aac-asc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417929F15DA3005DB656 /* mpeg4-aac-asc.c */; };
+		8610419329F15DA3005DB656 /* webm-vpx.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417A29F15DA3005DB656 /* webm-vpx.c */; };
+		8610419429F15DA3005DB656 /* hevc-annexbtomp4.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417B29F15DA3005DB656 /* hevc-annexbtomp4.c */; };
+		8610419529F15DA3005DB656 /* mpeg4-hevc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417C29F15DA3005DB656 /* mpeg4-hevc.c */; };
+		8610419629F15DA3005DB656 /* flv-demuxer.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417D29F15DA3005DB656 /* flv-demuxer.c */; };
+		8610419729F15DA3005DB656 /* amf3.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417E29F15DA3005DB656 /* amf3.c */; };
+		8610419829F15DA3005DB656 /* riff-acm.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610417F29F15DA3005DB656 /* riff-acm.c */; };
+		8610419929F15DA3005DB656 /* vvc-mp4toannexb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418029F15DA3005DB656 /* vvc-mp4toannexb.c */; };
+		8610419A29F15DA3005DB656 /* mpeg4-aac.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418129F15DA3005DB656 /* mpeg4-aac.c */; };
+		8610419B29F15DA3005DB656 /* flv-reader.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418229F15DA3005DB656 /* flv-reader.c */; };
+		8610419C29F15DA3005DB656 /* flv-header.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418329F15DA3005DB656 /* flv-header.c */; };
+		8610419D29F15DA3005DB656 /* flv-demuxer-script.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418429F15DA3005DB656 /* flv-demuxer-script.c */; };
+		8610419E29F15DA3005DB656 /* mpeg4-annexbtomp4.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418529F15DA3005DB656 /* mpeg4-annexbtomp4.c */; };
+		8610419F29F15DA3005DB656 /* flv-parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418629F15DA3005DB656 /* flv-parser.c */; };
+		861041A029F15DA3005DB656 /* flv-muxer.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418729F15DA3005DB656 /* flv-muxer.c */; };
+		861041A129F15DA3005DB656 /* mpeg4-avc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418829F15DA3005DB656 /* mpeg4-avc.c */; };
+		861041A229F15DA3005DB656 /* mpeg4-vvc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418929F15DA3005DB656 /* mpeg4-vvc.c */; };
+		861041A329F15DA3005DB656 /* opus-head.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418A29F15DA3005DB656 /* opus-head.c */; };
+		861041A429F15DA3005DB656 /* hevc-mp4toannexb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8610418B29F15DA3005DB656 /* hevc-mp4toannexb.c */; };
 		8645DB9929F00567007672F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8645DB9829F00567007672F1 /* AppDelegate.swift */; };
 		8645DB9B29F00567007672F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8645DB9A29F00567007672F1 /* SceneDelegate.swift */; };
 		8645DB9D29F00567007672F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8645DB9C29F00567007672F1 /* ViewController.swift */; };
@@ -29,6 +55,53 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8610415229F12150005DB656 /* NXManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NXManager.h; sourceTree = "<group>"; };
+		8610415329F12150005DB656 /* NXManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NXManager.m; sourceTree = "<group>"; };
+		8610415829F123B2005DB656 /* NXScreenCapturer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NXScreenCapturer-Bridging-Header.h"; sourceTree = "<group>"; };
+		8610415F29F15DA2005DB656 /* flv-reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "flv-reader.h"; sourceTree = "<group>"; };
+		8610416029F15DA2005DB656 /* mpeg4-bits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mpeg4-bits.h"; sourceTree = "<group>"; };
+		8610416129F15DA2005DB656 /* mpeg4-aac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mpeg4-aac.h"; sourceTree = "<group>"; };
+		8610416229F15DA2005DB656 /* riff-acm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "riff-acm.h"; sourceTree = "<group>"; };
+		8610416329F15DA2005DB656 /* flv-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "flv-header.h"; sourceTree = "<group>"; };
+		8610416429F15DA3005DB656 /* flv-proto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "flv-proto.h"; sourceTree = "<group>"; };
+		8610416529F15DA3005DB656 /* flv-parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "flv-parser.h"; sourceTree = "<group>"; };
+		8610416629F15DA3005DB656 /* flv-muxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "flv-muxer.h"; sourceTree = "<group>"; };
+		8610416729F15DA3005DB656 /* opus-head.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "opus-head.h"; sourceTree = "<group>"; };
+		8610416829F15DA3005DB656 /* mpeg4-vvc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mpeg4-vvc.h"; sourceTree = "<group>"; };
+		8610416929F15DA3005DB656 /* mpeg4-avc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mpeg4-avc.h"; sourceTree = "<group>"; };
+		8610416A29F15DA3005DB656 /* aom-av1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "aom-av1.h"; sourceTree = "<group>"; };
+		8610416B29F15DA3005DB656 /* amf0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amf0.h; sourceTree = "<group>"; };
+		8610416C29F15DA3005DB656 /* flv-writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "flv-writer.h"; sourceTree = "<group>"; };
+		8610416D29F15DA3005DB656 /* mp3-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mp3-header.h"; sourceTree = "<group>"; };
+		8610416E29F15DA3005DB656 /* webm-vpx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "webm-vpx.h"; sourceTree = "<group>"; };
+		8610416F29F15DA3005DB656 /* mpeg4-hevc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mpeg4-hevc.h"; sourceTree = "<group>"; };
+		8610417029F15DA3005DB656 /* amf3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amf3.h; sourceTree = "<group>"; };
+		8610417129F15DA3005DB656 /* flv-demuxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "flv-demuxer.h"; sourceTree = "<group>"; };
+		8610417329F15DA3005DB656 /* aom-av1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "aom-av1.c"; sourceTree = "<group>"; };
+		8610417429F15DA3005DB656 /* mpeg4-mp4toannexb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpeg4-mp4toannexb.c"; sourceTree = "<group>"; };
+		8610417529F15DA3005DB656 /* vvc-annexbtomp4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "vvc-annexbtomp4.c"; sourceTree = "<group>"; };
+		8610417629F15DA3005DB656 /* mp3-header.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mp3-header.c"; sourceTree = "<group>"; };
+		8610417729F15DA3005DB656 /* flv-writer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "flv-writer.c"; sourceTree = "<group>"; };
+		8610417829F15DA3005DB656 /* amf0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = amf0.c; sourceTree = "<group>"; };
+		8610417929F15DA3005DB656 /* mpeg4-aac-asc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpeg4-aac-asc.c"; sourceTree = "<group>"; };
+		8610417A29F15DA3005DB656 /* webm-vpx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "webm-vpx.c"; sourceTree = "<group>"; };
+		8610417B29F15DA3005DB656 /* hevc-annexbtomp4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "hevc-annexbtomp4.c"; sourceTree = "<group>"; };
+		8610417C29F15DA3005DB656 /* mpeg4-hevc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpeg4-hevc.c"; sourceTree = "<group>"; };
+		8610417D29F15DA3005DB656 /* flv-demuxer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "flv-demuxer.c"; sourceTree = "<group>"; };
+		8610417E29F15DA3005DB656 /* amf3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = amf3.c; sourceTree = "<group>"; };
+		8610417F29F15DA3005DB656 /* riff-acm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "riff-acm.c"; sourceTree = "<group>"; };
+		8610418029F15DA3005DB656 /* vvc-mp4toannexb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "vvc-mp4toannexb.c"; sourceTree = "<group>"; };
+		8610418129F15DA3005DB656 /* mpeg4-aac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpeg4-aac.c"; sourceTree = "<group>"; };
+		8610418229F15DA3005DB656 /* flv-reader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "flv-reader.c"; sourceTree = "<group>"; };
+		8610418329F15DA3005DB656 /* flv-header.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "flv-header.c"; sourceTree = "<group>"; };
+		8610418429F15DA3005DB656 /* flv-demuxer-script.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "flv-demuxer-script.c"; sourceTree = "<group>"; };
+		8610418529F15DA3005DB656 /* mpeg4-annexbtomp4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpeg4-annexbtomp4.c"; sourceTree = "<group>"; };
+		8610418629F15DA3005DB656 /* flv-parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "flv-parser.c"; sourceTree = "<group>"; };
+		8610418729F15DA3005DB656 /* flv-muxer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "flv-muxer.c"; sourceTree = "<group>"; };
+		8610418829F15DA3005DB656 /* mpeg4-avc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpeg4-avc.c"; sourceTree = "<group>"; };
+		8610418929F15DA3005DB656 /* mpeg4-vvc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "mpeg4-vvc.c"; sourceTree = "<group>"; };
+		8610418A29F15DA3005DB656 /* opus-head.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "opus-head.c"; sourceTree = "<group>"; };
+		8610418B29F15DA3005DB656 /* hevc-mp4toannexb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "hevc-mp4toannexb.c"; sourceTree = "<group>"; };
 		8645DB9529F00567007672F1 /* NXScreenCapturer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NXScreenCapturer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8645DB9829F00567007672F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8645DB9A29F00567007672F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +277,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8610415929F12776005DB656 /* flv-muxer */ = {
+			isa = PBXGroup;
+			children = (
+				8610415E29F15DA2005DB656 /* include */,
+				8610417229F15DA3005DB656 /* source */,
+			);
+			path = "flv-muxer";
+			sourceTree = "<group>";
+		};
+		8610415E29F15DA2005DB656 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				8610415F29F15DA2005DB656 /* flv-reader.h */,
+				8610416029F15DA2005DB656 /* mpeg4-bits.h */,
+				8610416129F15DA2005DB656 /* mpeg4-aac.h */,
+				8610416229F15DA2005DB656 /* riff-acm.h */,
+				8610416329F15DA2005DB656 /* flv-header.h */,
+				8610416429F15DA3005DB656 /* flv-proto.h */,
+				8610416529F15DA3005DB656 /* flv-parser.h */,
+				8610416629F15DA3005DB656 /* flv-muxer.h */,
+				8610416729F15DA3005DB656 /* opus-head.h */,
+				8610416829F15DA3005DB656 /* mpeg4-vvc.h */,
+				8610416929F15DA3005DB656 /* mpeg4-avc.h */,
+				8610416A29F15DA3005DB656 /* aom-av1.h */,
+				8610416B29F15DA3005DB656 /* amf0.h */,
+				8610416C29F15DA3005DB656 /* flv-writer.h */,
+				8610416D29F15DA3005DB656 /* mp3-header.h */,
+				8610416E29F15DA3005DB656 /* webm-vpx.h */,
+				8610416F29F15DA3005DB656 /* mpeg4-hevc.h */,
+				8610417029F15DA3005DB656 /* amf3.h */,
+				8610417129F15DA3005DB656 /* flv-demuxer.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		8610417229F15DA3005DB656 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				8610417329F15DA3005DB656 /* aom-av1.c */,
+				8610417429F15DA3005DB656 /* mpeg4-mp4toannexb.c */,
+				8610417529F15DA3005DB656 /* vvc-annexbtomp4.c */,
+				8610417629F15DA3005DB656 /* mp3-header.c */,
+				8610417729F15DA3005DB656 /* flv-writer.c */,
+				8610417829F15DA3005DB656 /* amf0.c */,
+				8610417929F15DA3005DB656 /* mpeg4-aac-asc.c */,
+				8610417A29F15DA3005DB656 /* webm-vpx.c */,
+				8610417B29F15DA3005DB656 /* hevc-annexbtomp4.c */,
+				8610417C29F15DA3005DB656 /* mpeg4-hevc.c */,
+				8610417D29F15DA3005DB656 /* flv-demuxer.c */,
+				8610417E29F15DA3005DB656 /* amf3.c */,
+				8610417F29F15DA3005DB656 /* riff-acm.c */,
+				8610418029F15DA3005DB656 /* vvc-mp4toannexb.c */,
+				8610418129F15DA3005DB656 /* mpeg4-aac.c */,
+				8610418229F15DA3005DB656 /* flv-reader.c */,
+				8610418329F15DA3005DB656 /* flv-header.c */,
+				8610418429F15DA3005DB656 /* flv-demuxer-script.c */,
+				8610418529F15DA3005DB656 /* mpeg4-annexbtomp4.c */,
+				8610418629F15DA3005DB656 /* flv-parser.c */,
+				8610418729F15DA3005DB656 /* flv-muxer.c */,
+				8610418829F15DA3005DB656 /* mpeg4-avc.c */,
+				8610418929F15DA3005DB656 /* mpeg4-vvc.c */,
+				8610418A29F15DA3005DB656 /* opus-head.c */,
+				8610418B29F15DA3005DB656 /* hevc-mp4toannexb.c */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
 		8645DB8C29F00567007672F1 = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +364,7 @@
 		8645DB9729F00567007672F1 /* NXScreenCapturer */ = {
 			isa = PBXGroup;
 			children = (
+				8610415929F12776005DB656 /* flv-muxer */,
 				865F2CF429F02DF0005E5ED1 /* codec */,
 				8645DB9829F00567007672F1 /* AppDelegate.swift */,
 				8645DB9A29F00567007672F1 /* SceneDelegate.swift */,
@@ -232,6 +373,9 @@
 				8645DBA129F00568007672F1 /* Assets.xcassets */,
 				8645DBA329F00568007672F1 /* LaunchScreen.storyboard */,
 				8645DBA629F00568007672F1 /* Info.plist */,
+				8610415229F12150005DB656 /* NXManager.h */,
+				8610415329F12150005DB656 /* NXManager.m */,
+				8610415829F123B2005DB656 /* NXScreenCapturer-Bridging-Header.h */,
 			);
 			path = NXScreenCapturer;
 			sourceTree = "<group>";
@@ -240,13 +384,13 @@
 			isa = PBXGroup;
 			children = (
 				865F2CF629F02DF0005E5ED1 /* ffmpeg */,
-				865F2CF529F02DF0005E5ED1 /* TSVideoEncoder.mm */,
-				865F2D7F29F02DF1005E5ED1 /* TSBitrateHelper.hpp */,
-				865F2D8029F02DF1005E5ED1 /* TSHardwareEncoder.mm */,
-				865F2D8129F02DF1005E5ED1 /* TSBitrateHelper.cpp */,
-				865F2D8229F02DF1005E5ED1 /* TSVideoEncoder.h */,
 				865F2D8329F02DF1005E5ED1 /* libspeexdsp */,
+				865F2D8129F02DF1005E5ED1 /* TSBitrateHelper.cpp */,
+				865F2D7F29F02DF1005E5ED1 /* TSBitrateHelper.hpp */,
 				865F2D8E29F02DF1005E5ED1 /* TSHardwareEncoder.h */,
+				865F2D8029F02DF1005E5ED1 /* TSHardwareEncoder.mm */,
+				865F2D8229F02DF1005E5ED1 /* TSVideoEncoder.h */,
+				865F2CF529F02DF0005E5ED1 /* TSVideoEncoder.mm */,
 			);
 			path = codec;
 			sourceTree = "<group>";
@@ -569,12 +713,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8610419729F15DA3005DB656 /* amf3.c in Sources */,
+				8610419129F15DA3005DB656 /* amf0.c in Sources */,
+				8610419929F15DA3005DB656 /* vvc-mp4toannexb.c in Sources */,
+				861041A129F15DA3005DB656 /* mpeg4-avc.c in Sources */,
+				861041A329F15DA3005DB656 /* opus-head.c in Sources */,
+				8610419C29F15DA3005DB656 /* flv-header.c in Sources */,
+				861041A429F15DA3005DB656 /* hevc-mp4toannexb.c in Sources */,
+				8610418E29F15DA3005DB656 /* vvc-annexbtomp4.c in Sources */,
+				8610418F29F15DA3005DB656 /* mp3-header.c in Sources */,
+				861041A029F15DA3005DB656 /* flv-muxer.c in Sources */,
+				8610419829F15DA3005DB656 /* riff-acm.c in Sources */,
+				8610419B29F15DA3005DB656 /* flv-reader.c in Sources */,
+				8610419229F15DA3005DB656 /* mpeg4-aac-asc.c in Sources */,
+				861041A229F15DA3005DB656 /* mpeg4-vvc.c in Sources */,
 				865F2D9729F02DF1005E5ED1 /* TSBitrateHelper.cpp in Sources */,
 				865F2D9629F02DF1005E5ED1 /* TSHardwareEncoder.mm in Sources */,
+				8610419429F15DA3005DB656 /* hevc-annexbtomp4.c in Sources */,
+				8610419529F15DA3005DB656 /* mpeg4-hevc.c in Sources */,
 				8645DB9D29F00567007672F1 /* ViewController.swift in Sources */,
+				8610419629F15DA3005DB656 /* flv-demuxer.c in Sources */,
 				8645DB9929F00567007672F1 /* AppDelegate.swift in Sources */,
+				8610419E29F15DA3005DB656 /* mpeg4-annexbtomp4.c in Sources */,
+				8610419329F15DA3005DB656 /* webm-vpx.c in Sources */,
+				8610418C29F15DA3005DB656 /* aom-av1.c in Sources */,
+				8610419F29F15DA3005DB656 /* flv-parser.c in Sources */,
 				8645DB9B29F00567007672F1 /* SceneDelegate.swift in Sources */,
+				8610418D29F15DA3005DB656 /* mpeg4-mp4toannexb.c in Sources */,
+				8610415429F12150005DB656 /* NXManager.m in Sources */,
+				8610419A29F15DA3005DB656 /* mpeg4-aac.c in Sources */,
 				865F2D8F29F02DF1005E5ED1 /* TSVideoEncoder.mm in Sources */,
+				8610419D29F15DA3005DB656 /* flv-demuxer-script.c in Sources */,
+				8610419029F15DA3005DB656 /* flv-writer.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +917,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.axzt.NXScreenCapturer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/NXScreenCapturer/NXScreenCapturer-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -785,6 +956,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.axzt.NXScreenCapturer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/NXScreenCapturer/NXScreenCapturer-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
