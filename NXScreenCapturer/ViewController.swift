@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView! {
         didSet {
-            webView.load(.init(url: .init(string: "https://www.toutiao.com/video/6923901776512942599/?log_from=63fd615683f0d_1681913305384")!))
+            webView.load(.init(url: .init(string: "https://www.toutiao.com")!))
         }
     }
     
