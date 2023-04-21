@@ -8,6 +8,7 @@
 import UIKit
 import ReplayKit
 import WebKit
+import AVFoundation
 
 
 
@@ -15,11 +16,11 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView! {
         didSet {
-            webView.load(.init(url: .init(string: "https://www.toutiao.com")!))
+            webView.load(.init(url: .init(string: "https://naozhong.net.cn/jishiqi/")!))
         }
     }
     
-    
+    var player: AVAudioPlayer?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -28,10 +29,25 @@ class ViewController: UIViewController {
     
     @IBAction func onStartButtonClick(_ sender: Any) {
         startScreenCapture()
+        
+        guard let path = Bundle.main.path(forResource: "music", ofType: "mp3") else {return}
+        
+        let url = URL.init(filePath: path)
+        
+        guard let player = try? AVAudioPlayer.init(contentsOf: url) else {
+            return
+        }
+        
+        player.prepareToPlay()
+        player.play()
+        
+        self.player = player
+        
     }
     
     @IBAction func onStopButtonClick(_ sender: Any) {
         stopScreenCapture()
+        self.player?.stop()
     }
     
     func startScreenCapture() {
@@ -40,13 +56,10 @@ class ViewController: UIViewController {
             switch sampleBufferType {
             case .video:
                 self .handleVideoSampleBuffer(sampleBuffer)
-                break
             case .audioApp:
-//                print("audioApp = \(sampleBuffer)")
-                break
+                self.handleAppSampleBuffer(sampleBuffer)
             case .audioMic:
-//                print("audioMic = \(sampleBuffer)")
-                break
+                self.handleMicSampleBuffer(sampleBuffer)
             @unknown default:
                 fatalError()
             }
@@ -71,6 +84,13 @@ extension ViewController {
         NXManager.shared().handleVideoPixelBuffer(pixelBuffer, timestamp: Int64(timestamp))
     }
     
+    func handleAppSampleBuffer(_ sampleBuffer: CMSampleBuffer) {
+        NXManager.shared().handleAppAudioBuffer(sampleBuffer)
+    }
+    
+    func handleMicSampleBuffer(_ sampleBuffer: CMSampleBuffer) {
+        NXManager.shared().handleMicAudioBuffer(sampleBuffer)
+    }
 }
 
 

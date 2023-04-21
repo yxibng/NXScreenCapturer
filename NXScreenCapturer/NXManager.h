@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreVideo/CoreVideo.h>
+#import <CoreMedia/CoreMedia.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)handleVideoPixelBuffer:(CVPixelBufferRef)pixelBuffer timestamp:(int64_t)timestamp;
 
-
+- (void)handleAppAudioBuffer:(CMSampleBufferRef)appAudioBuffer;
+- (void)handleMicAudioBuffer:(CMSampleBufferRef)micAudioBuffer;
 
 @end
 

@@ -39,6 +39,16 @@
 		8645DBA029F00567007672F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8645DB9E29F00567007672F1 /* Main.storyboard */; };
 		8645DBA229F00568007672F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8645DBA129F00568007672F1 /* Assets.xcassets */; };
 		8645DBA529F00568007672F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8645DBA329F00568007672F1 /* LaunchScreen.storyboard */; };
+		86514A5929F26AC900258D18 /* NXHardwareAudioEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 86514A5829F26AC900258D18 /* NXHardwareAudioEncoder.m */; };
+		86514A5E29F26B0500258D18 /* NXLiveAudioFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 86514A5B29F26B0500258D18 /* NXLiveAudioFrame.m */; };
+		86514A5F29F26B0500258D18 /* NXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 86514A5D29F26B0500258D18 /* NXFrame.m */; };
+		86514A6229F26B2E00258D18 /* NXLiveAudioConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 86514A6129F26B2D00258D18 /* NXLiveAudioConfiguration.m */; };
+		86514A6529F26C7D00258D18 /* NXAudioMixer.m in Sources */ = {isa = PBXBuildFile; fileRef = 86514A6429F26C7D00258D18 /* NXAudioMixer.m */; };
+		86514A6829F2704700258D18 /* TSSpeexConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 86514A6629F2704700258D18 /* TSSpeexConverter.m */; };
+		86514A6A29F285AA00258D18 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86514A6929F285AA00258D18 /* music.mp3 */; };
+		86514A7129F28CA700258D18 /* TPCircularBuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 86514A6E29F28CA700258D18 /* TPCircularBuffer.c */; };
+		86514A7229F28CA700258D18 /* TPCircularBuffer+AudioBufferList.c in Sources */ = {isa = PBXBuildFile; fileRef = 86514A6F29F28CA700258D18 /* TPCircularBuffer+AudioBufferList.c */; };
+		86514A7529F28CEC00258D18 /* NXAudioBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 86514A7429F28CEC00258D18 /* NXAudioBuffer.m */; };
 		865F2D8F29F02DF1005E5ED1 /* TSVideoEncoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 865F2CF529F02DF0005E5ED1 /* TSVideoEncoder.mm */; };
 		865F2D9029F02DF1005E5ED1 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 865F2D7929F02DF1005E5ED1 /* libavutil.a */; };
 		865F2D9129F02DF1005E5ED1 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 865F2D7A29F02DF1005E5ED1 /* libavfilter.a */; };
@@ -110,6 +120,27 @@
 		8645DBA129F00568007672F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8645DBA429F00568007672F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8645DBA629F00568007672F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86514A5529F26AC800258D18 /* NXAudioEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXAudioEncoding.h; sourceTree = "<group>"; };
+		86514A5629F26AC800258D18 /* NXHardwareAudioEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXHardwareAudioEncoder.h; sourceTree = "<group>"; };
+		86514A5729F26AC900258D18 /* NXVideoEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXVideoEncoding.h; sourceTree = "<group>"; };
+		86514A5829F26AC900258D18 /* NXHardwareAudioEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXHardwareAudioEncoder.m; sourceTree = "<group>"; };
+		86514A5A29F26B0500258D18 /* NXFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXFrame.h; sourceTree = "<group>"; };
+		86514A5B29F26B0500258D18 /* NXLiveAudioFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXLiveAudioFrame.m; sourceTree = "<group>"; };
+		86514A5C29F26B0500258D18 /* NXLiveAudioFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXLiveAudioFrame.h; sourceTree = "<group>"; };
+		86514A5D29F26B0500258D18 /* NXFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXFrame.m; sourceTree = "<group>"; };
+		86514A6029F26B2D00258D18 /* NXLiveAudioConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXLiveAudioConfiguration.h; sourceTree = "<group>"; };
+		86514A6129F26B2D00258D18 /* NXLiveAudioConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXLiveAudioConfiguration.m; sourceTree = "<group>"; };
+		86514A6329F26C7D00258D18 /* NXAudioMixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NXAudioMixer.h; sourceTree = "<group>"; };
+		86514A6429F26C7D00258D18 /* NXAudioMixer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NXAudioMixer.m; sourceTree = "<group>"; };
+		86514A6629F2704700258D18 /* TSSpeexConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSpeexConverter.m; sourceTree = "<group>"; };
+		86514A6729F2704700258D18 /* TSSpeexConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSpeexConverter.h; sourceTree = "<group>"; };
+		86514A6929F285AA00258D18 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		86514A6D29F28CA700258D18 /* TPCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCircularBuffer.h; sourceTree = "<group>"; };
+		86514A6E29F28CA700258D18 /* TPCircularBuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TPCircularBuffer.c; sourceTree = "<group>"; };
+		86514A6F29F28CA700258D18 /* TPCircularBuffer+AudioBufferList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "TPCircularBuffer+AudioBufferList.c"; sourceTree = "<group>"; };
+		86514A7029F28CA700258D18 /* TPCircularBuffer+AudioBufferList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TPCircularBuffer+AudioBufferList.h"; sourceTree = "<group>"; };
+		86514A7329F28CEC00258D18 /* NXAudioBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NXAudioBuffer.h; sourceTree = "<group>"; };
+		86514A7429F28CEC00258D18 /* NXAudioBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NXAudioBuffer.m; sourceTree = "<group>"; };
 		865F2CF529F02DF0005E5ED1 /* TSVideoEncoder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TSVideoEncoder.mm; sourceTree = "<group>"; };
 		865F2CF929F02DF0005E5ED1 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		865F2CFA29F02DF0005E5ED1 /* buffersrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffersrc.h; sourceTree = "<group>"; };
@@ -364,6 +395,7 @@
 		8645DB9729F00567007672F1 /* NXScreenCapturer */ = {
 			isa = PBXGroup;
 			children = (
+				86514A6C29F28C9600258D18 /* TPCircularBuffer */,
 				8610415929F12776005DB656 /* flv-muxer */,
 				865F2CF429F02DF0005E5ED1 /* codec */,
 				8645DB9829F00567007672F1 /* AppDelegate.swift */,
@@ -373,22 +405,66 @@
 				8645DBA129F00568007672F1 /* Assets.xcassets */,
 				8645DBA329F00568007672F1 /* LaunchScreen.storyboard */,
 				8645DBA629F00568007672F1 /* Info.plist */,
+				86514A6B29F285B400258D18 /* Resources */,
 				8610415229F12150005DB656 /* NXManager.h */,
 				8610415329F12150005DB656 /* NXManager.m */,
+				86514A7329F28CEC00258D18 /* NXAudioBuffer.h */,
+				86514A7429F28CEC00258D18 /* NXAudioBuffer.m */,
+				86514A6329F26C7D00258D18 /* NXAudioMixer.h */,
+				86514A6429F26C7D00258D18 /* NXAudioMixer.m */,
 				8610415829F123B2005DB656 /* NXScreenCapturer-Bridging-Header.h */,
 			);
 			path = NXScreenCapturer;
 			sourceTree = "<group>";
 		};
+		86514A5429F26AB400258D18 /* AAC */ = {
+			isa = PBXGroup;
+			children = (
+				86514A5529F26AC800258D18 /* NXAudioEncoding.h */,
+				86514A5A29F26B0500258D18 /* NXFrame.h */,
+				86514A5D29F26B0500258D18 /* NXFrame.m */,
+				86514A5629F26AC800258D18 /* NXHardwareAudioEncoder.h */,
+				86514A5829F26AC900258D18 /* NXHardwareAudioEncoder.m */,
+				86514A6029F26B2D00258D18 /* NXLiveAudioConfiguration.h */,
+				86514A6129F26B2D00258D18 /* NXLiveAudioConfiguration.m */,
+				86514A5C29F26B0500258D18 /* NXLiveAudioFrame.h */,
+				86514A5B29F26B0500258D18 /* NXLiveAudioFrame.m */,
+				86514A5729F26AC900258D18 /* NXVideoEncoding.h */,
+			);
+			path = AAC;
+			sourceTree = "<group>";
+		};
+		86514A6B29F285B400258D18 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				86514A6929F285AA00258D18 /* music.mp3 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		86514A6C29F28C9600258D18 /* TPCircularBuffer */ = {
+			isa = PBXGroup;
+			children = (
+				86514A6E29F28CA700258D18 /* TPCircularBuffer.c */,
+				86514A6D29F28CA700258D18 /* TPCircularBuffer.h */,
+				86514A6F29F28CA700258D18 /* TPCircularBuffer+AudioBufferList.c */,
+				86514A7029F28CA700258D18 /* TPCircularBuffer+AudioBufferList.h */,
+			);
+			path = TPCircularBuffer;
+			sourceTree = "<group>";
+		};
 		865F2CF429F02DF0005E5ED1 /* codec */ = {
 			isa = PBXGroup;
 			children = (
+				86514A5429F26AB400258D18 /* AAC */,
 				865F2CF629F02DF0005E5ED1 /* ffmpeg */,
 				865F2D8329F02DF1005E5ED1 /* libspeexdsp */,
 				865F2D8129F02DF1005E5ED1 /* TSBitrateHelper.cpp */,
 				865F2D7F29F02DF1005E5ED1 /* TSBitrateHelper.hpp */,
 				865F2D8E29F02DF1005E5ED1 /* TSHardwareEncoder.h */,
 				865F2D8029F02DF1005E5ED1 /* TSHardwareEncoder.mm */,
+				86514A6729F2704700258D18 /* TSSpeexConverter.h */,
+				86514A6629F2704700258D18 /* TSSpeexConverter.m */,
 				865F2D8229F02DF1005E5ED1 /* TSVideoEncoder.h */,
 				865F2CF529F02DF0005E5ED1 /* TSVideoEncoder.mm */,
 			);
@@ -700,6 +776,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86514A6A29F285AA00258D18 /* music.mp3 in Resources */,
 				8645DBA529F00568007672F1 /* LaunchScreen.storyboard in Resources */,
 				8645DBA229F00568007672F1 /* Assets.xcassets in Resources */,
 				8645DBA029F00567007672F1 /* Main.storyboard in Resources */,
@@ -716,30 +793,39 @@
 				8610419729F15DA3005DB656 /* amf3.c in Sources */,
 				8610419129F15DA3005DB656 /* amf0.c in Sources */,
 				8610419929F15DA3005DB656 /* vvc-mp4toannexb.c in Sources */,
+				86514A7529F28CEC00258D18 /* NXAudioBuffer.m in Sources */,
 				861041A129F15DA3005DB656 /* mpeg4-avc.c in Sources */,
 				861041A329F15DA3005DB656 /* opus-head.c in Sources */,
 				8610419C29F15DA3005DB656 /* flv-header.c in Sources */,
+				86514A5E29F26B0500258D18 /* NXLiveAudioFrame.m in Sources */,
+				86514A6829F2704700258D18 /* TSSpeexConverter.m in Sources */,
 				861041A429F15DA3005DB656 /* hevc-mp4toannexb.c in Sources */,
 				8610418E29F15DA3005DB656 /* vvc-annexbtomp4.c in Sources */,
 				8610418F29F15DA3005DB656 /* mp3-header.c in Sources */,
 				861041A029F15DA3005DB656 /* flv-muxer.c in Sources */,
 				8610419829F15DA3005DB656 /* riff-acm.c in Sources */,
+				86514A7229F28CA700258D18 /* TPCircularBuffer+AudioBufferList.c in Sources */,
 				8610419B29F15DA3005DB656 /* flv-reader.c in Sources */,
 				8610419229F15DA3005DB656 /* mpeg4-aac-asc.c in Sources */,
 				861041A229F15DA3005DB656 /* mpeg4-vvc.c in Sources */,
 				865F2D9729F02DF1005E5ED1 /* TSBitrateHelper.cpp in Sources */,
 				865F2D9629F02DF1005E5ED1 /* TSHardwareEncoder.mm in Sources */,
+				86514A6229F26B2E00258D18 /* NXLiveAudioConfiguration.m in Sources */,
 				8610419429F15DA3005DB656 /* hevc-annexbtomp4.c in Sources */,
+				86514A5F29F26B0500258D18 /* NXFrame.m in Sources */,
 				8610419529F15DA3005DB656 /* mpeg4-hevc.c in Sources */,
+				86514A5929F26AC900258D18 /* NXHardwareAudioEncoder.m in Sources */,
 				8645DB9D29F00567007672F1 /* ViewController.swift in Sources */,
 				8610419629F15DA3005DB656 /* flv-demuxer.c in Sources */,
 				8645DB9929F00567007672F1 /* AppDelegate.swift in Sources */,
 				8610419E29F15DA3005DB656 /* mpeg4-annexbtomp4.c in Sources */,
 				8610419329F15DA3005DB656 /* webm-vpx.c in Sources */,
+				86514A6529F26C7D00258D18 /* NXAudioMixer.m in Sources */,
 				8610418C29F15DA3005DB656 /* aom-av1.c in Sources */,
 				8610419F29F15DA3005DB656 /* flv-parser.c in Sources */,
 				8645DB9B29F00567007672F1 /* SceneDelegate.swift in Sources */,
 				8610418D29F15DA3005DB656 /* mpeg4-mp4toannexb.c in Sources */,
+				86514A7129F28CA700258D18 /* TPCircularBuffer.c in Sources */,
 				8610415429F12150005DB656 /* NXManager.m in Sources */,
 				8610419A29F15DA3005DB656 /* mpeg4-aac.c in Sources */,
 				865F2D8F29F02DF1005E5ED1 /* TSVideoEncoder.mm in Sources */,
