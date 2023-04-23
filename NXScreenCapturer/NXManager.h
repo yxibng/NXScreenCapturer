@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)handleAppAudioBuffer:(CMSampleBufferRef)appAudioBuffer;
 - (void)handleMicAudioBuffer:(CMSampleBufferRef)micAudioBuffer;
 
+- (void)stop;
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END
