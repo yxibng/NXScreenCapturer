@@ -24,6 +24,9 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     void *_flvWriter;
     int64_t _startVideoTimestamp;
     uint64_t _startAudioTimestamp;
+    
+    int64_t _startTimestamp;
+    
     BOOL _hasAvccHeaderWriten;
     flv_muxer_t *_muxer;
 }
@@ -31,8 +34,6 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
 @property (nonatomic, strong) TSHardwareEncoder *videoEncoder;
 @property (nonatomic, strong) NXAudioMixer *audioMixer;
 @property (nonatomic, strong) NXAudioBuffer *audioBuffer;
-
-
 @property (nonatomic, strong) NXHardwareAudioEncoder *audioEncoder;
 
 
@@ -122,6 +123,9 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
         //encode
         NSData *data = [NSData dataWithBytes:buffer length:bufferSize];
         [self.audioEncoder encodeAudioData:data timeStamp:timestamp];
+        
+        NSLog(@"encode audio ts = %d", timestamp);
+        
     } while (ret);
 }
 
@@ -145,12 +149,14 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     [data appendData:frame.data];
     
     
-    
-    if (!_startAudioTimestamp) {
-        _startAudioTimestamp = frame.timestamp;
+    if (!_startTimestamp) {
+        _startTimestamp = frame.timestamp;
     }
+    int32_t pts = (uint32_t)frame.timestamp - _startTimestamp;
+    assert(pts >= 0);
     
-    uint32_t pts = frame.timestamp - _startAudioTimestamp;
+    NSLog(@"audio pts = %d", pts);
+    
     
     flv_muxer_aac(self->_muxer, data.bytes, data.length, pts, pts);
     
@@ -161,11 +167,10 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
 #pragma mark -
 
 - (void)encoder:(TSHardwareEncoder *)encoder gotEncoderData:(uint8_t *)data length:(int)length iskey:(BOOL)iskey timestamp:(int64_t)timestamp {
-    if (!_startVideoTimestamp) {
-        _startVideoTimestamp = timestamp;
+    if (!_startTimestamp) {
+        _startTimestamp = timestamp;
     }
-    
-    uint32_t pts = timestamp - _startVideoTimestamp;
+    uint32_t pts = timestamp - _startTimestamp;
     flv_muxer_avc(_muxer, data, length, pts, pts);
 }
 

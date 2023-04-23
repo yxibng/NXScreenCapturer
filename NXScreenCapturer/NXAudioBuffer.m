@@ -54,11 +54,12 @@ static float kSampleRate = 48000.0;
         
         uint32_t availableBytes = 0;
         TPCircularBufferTail(&_buffer, &availableBytes);
-        int diff = availableBytes / 2.0 / kSampleRate * 1000;
+        availableBytes -= length;
+        int diff = availableBytes / 2.0 / kSampleRate * 1000.0;
         if (abs((int)_timestamp + diff - (int)timestamp) > 5) {
             //TODO: fix timestamp
             _timestamp = timestamp - diff;
-            NSLog(@"fix timestamp");
+            NSLog(@"fix timestamp, diff = %d", diff);
         }
     }
 }
