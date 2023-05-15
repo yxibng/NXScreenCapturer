@@ -175,10 +175,10 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     if (!_startTimestamp) {
         _startTimestamp = frame.timestamp;
     }
-    int32_t pts = (uint32_t)frame.timestamp - _startTimestamp;
+    int64_t pts = (int64_t)frame.timestamp - _startTimestamp;
     assert(pts >= 0);
-    NSLog(@"audio pts = %d", pts);
-    flv_muxer_aac(self->_muxer, data.bytes, data.length, pts, pts);
+    NSLog(@"audio pts = %lld", pts);
+    flv_muxer_aac(self->_muxer, data.bytes, data.length, (uint32_t)pts, (uint32_t)pts);
 }
 
 
@@ -191,8 +191,8 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     
 //    NSLog(@"video timestamp = %lld", timestamp);
     
-    uint32_t pts = timestamp - _startTimestamp;
-    flv_muxer_avc(_muxer, data, length, pts, pts);
+    int64_t pts = timestamp - _startTimestamp;
+    flv_muxer_avc(_muxer, data, length, (uint32_t)pts, (uint32_t)pts);
 #if 0
     writeH264(data, length);
 #endif
