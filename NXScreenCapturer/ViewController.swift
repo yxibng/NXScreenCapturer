@@ -30,11 +30,11 @@ class ViewController: UIViewController {
     @IBAction func onStartButtonClick(_ sender: Any) {
         startScreenCapture()
         
-        guard let path = Bundle.main.path(forResource: "music", ofType: "mp3") else {return}
+        guard let path = Bundle.main.path(forResource: "2486354025", ofType: "mp3") else {return}
         
-        let url = URL.init(filePath: path)
+        let url = NSURL.init(fileURLWithPath: path)
         
-        guard let player = try? AVAudioPlayer.init(contentsOf: url) else {
+        guard let player = try? AVAudioPlayer.init(contentsOf: url as URL) else {
             return
         }
         
@@ -53,6 +53,12 @@ class ViewController: UIViewController {
     func startScreenCapture() {
         RPScreenRecorder.shared().isMicrophoneEnabled = true
         RPScreenRecorder.shared().startCapture(handler: { sampleBuffer, sampleBufferType, err in
+            
+            if !RPScreenRecorder.shared().isMicrophoneEnabled {
+                print("=====not enable mic")
+            }
+            
+            
             switch sampleBufferType {
             case .video:
                 self .handleVideoSampleBuffer(sampleBuffer)
