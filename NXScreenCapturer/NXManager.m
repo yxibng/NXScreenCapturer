@@ -29,6 +29,19 @@ static void writeH264(uint8_t * h264, int length) {
 }
 
 
+static void writeAac(uint8_t * aac, int length) {
+    static FILE* m_pOutFile = NULL;
+    if (!m_pOutFile) {
+        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"xx.aac"];
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        m_pOutFile = fopen([path cStringUsingEncoding:NSUTF8StringEncoding], "a+");
+        NSLog(@"aac path = %@", path);
+    }
+    fwrite(aac, 1, length, m_pOutFile);
+}
+
+
+
 
 static int _flv_muxer_handler (void* param, int type, const void* data, size_t bytes, uint32_t timestamp);
 
@@ -170,6 +183,9 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     
     NSMutableData *data = [NSMutableData dataWithBytes:adtsHeader length:7];
     [data appendData:frame.data];
+    
+    writeAac(data.bytes, data.length);
+    
     
     
     if (!_startTimestamp) {
