@@ -35,6 +35,19 @@ static void writeH264(uint8_t * h264, int length) {
 }
 
 
+static void writeAac(uint8_t * aac, int length) {
+    static FILE* m_pOutFile = NULL;
+    if (!m_pOutFile) {
+        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"xx.aac"];
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        m_pOutFile = fopen([path cStringUsingEncoding:NSUTF8StringEncoding], "a+");
+        NSLog(@"aac path = %@", path);
+    }
+    fwrite(aac, 1, length, m_pOutFile);
+}
+
+
+
 
 static int _flv_muxer_handler (void* param, int type, const void* data, size_t bytes, uint32_t timestamp);
 
@@ -104,7 +117,7 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
         
         NSLog(@"path = %@",path);
         
-        _flvMuxer = std::make_shared<nx::FlvMuxer>([path cStringUsingEncoding:NSUTF8StringEncoding], true, true);
+        _flvMuxer = std::make_shared<nx::FlvMuxer>([path cStringUsingEncoding:NSUTF8StringEncoding], true, false);
     }
     return self;
 }
@@ -163,22 +176,19 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     
     NSLog(@"%s, ts = %llu", __func__, frame.timestamp);
     
-    uint8_t adtsHeader[7];
-//    memset(adtsHeader, 0, 7);
-    
-    
-    nx::adts_header header(nx::adts_header::Profile::LC, 48000,1, (int)frame.data.length);
+    uint8_t adtsHeader[7] = {0};
+    nx::adts_header header(nx::adts_header::Profile::LC, 48000, 1, (int)frame.data.length);
     header.to_buf(adtsHeader);
     NSMutableData *data = [NSMutableData dataWithBytes:adtsHeader length:7];
     [data appendData:frame.data];
-    
-    
     if (!_startTimestamp) {
         _startTimestamp = frame.timestamp;
     }
     int64_t pts = (int64_t)frame.timestamp - _startTimestamp;
     if (pts < 0) pts = 0;
     assert(pts >= 0);
+    
+    writeAac((uint8_t *)data.bytes, data.length);
     NSLog(@"audio pts = %lld", pts);
     _flvMuxer->mux_aac((uint8_t *)data.bytes, data.length, (uint32_t)pts);
 }
