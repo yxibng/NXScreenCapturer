@@ -12,9 +12,15 @@
 #import "NXAudioBuffer.h"
 
 
-#import "flv-muxer.h"
-#import "flv-writer.h"
-#import "mpeg4-aac.h"
+//#import "flv-muxer.h"
+//#import "flv-writer.h"
+//#import "mpeg4-aac.h"
+
+#import "flvmuxer.h"
+#import "aac.h"
+#include <memory>
+
+
 
 
 static void writeH264(uint8_t * h264, int length) {
@@ -42,7 +48,8 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     int64_t _startTimestamp;
     
     BOOL _hasAvccHeaderWriten;
-    flv_muxer_t *_muxer;
+    
+    std::shared_ptr<nx::FlvMuxer> _flvMuxer;
 }
 
 @property (nonatomic, strong) TSHardwareEncoder *videoEncoder;
@@ -67,12 +74,8 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
 
 
 - (void)dealloc {
-    if (_muxer) {
-        flv_muxer_destroy(_muxer);
-        _muxer = nil;
-    }
+    _flvMuxer.reset();
 }
-
 
 
 - (instancetype)init
@@ -89,15 +92,19 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
         
         
         NXLiveAudioConfiguration *audioConfig = [[NXLiveAudioConfiguration alloc] init];
-        audioConfig.audioSampleRate = 48000;
+        audioConfig.audioSampleRate = NXLiveAudioSampleRate_48000Hz;
         audioConfig.numberOfChannels = 1;
         audioConfig.audioBitRate = NXLiveAudioBitRate_96Kbps;
         _audioEncoder = [[NXHardwareAudioEncoder alloc] initWithAudioStreamConfiguration:audioConfig];
         [_audioEncoder setDelegate:self];
         
+        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"video.flv"];
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
         
-        [self createMuxer];
+        NSLog(@"path = %@",path);
         
+        _flvMuxer = std::make_shared<nx::FlvMuxer>([path cStringUsingEncoding:NSUTF8StringEncoding], true, true);
     }
     return self;
 }
@@ -110,7 +117,7 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
 
 
 - (void)stop {
-    [self closeFile];
+    
 }
 
 
@@ -157,17 +164,11 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     NSLog(@"%s, ts = %llu", __func__, frame.timestamp);
     
     uint8_t adtsHeader[7];
-    memset(adtsHeader, 0, 7);
-    
-    struct mpeg4_aac_t aac = (struct mpeg4_aac_t) {
-        .profile = 2,
-        .sampling_frequency_index = 3,
-        .channel_configuration = 1
-    };
-    size_t payload = frame.data.length;
-    mpeg4_aac_adts_save(&aac, payload, adtsHeader, 7);
+//    memset(adtsHeader, 0, 7);
     
     
+    nx::adts_header header(nx::adts_header::Profile::LC, 48000,1, (int)frame.data.length);
+    header.to_buf(adtsHeader);
     NSMutableData *data = [NSMutableData dataWithBytes:adtsHeader length:7];
     [data appendData:frame.data];
     
@@ -176,9 +177,10 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
         _startTimestamp = frame.timestamp;
     }
     int64_t pts = (int64_t)frame.timestamp - _startTimestamp;
+    if (pts < 0) pts = 0;
     assert(pts >= 0);
     NSLog(@"audio pts = %lld", pts);
-    flv_muxer_aac(self->_muxer, data.bytes, data.length, (uint32_t)pts, (uint32_t)pts);
+    _flvMuxer->mux_aac((uint8_t *)data.bytes, data.length, (uint32_t)pts);
 }
 
 
@@ -192,58 +194,14 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
 //    NSLog(@"video timestamp = %lld", timestamp);
     
     int64_t pts = timestamp - _startTimestamp;
-    flv_muxer_avc(_muxer, data, length, (uint32_t)pts, (uint32_t)pts);
+    _flvMuxer->mux_avc(data, length, (uint32_t)pts, (uint32_t)pts, iskey);
+    
+    
 #if 0
     writeH264(data, length);
 #endif
     
 }
 
-
-- (void)createMuxer {
-    if (!_muxer) {
-        _muxer = flv_muxer_create(_flv_muxer_handler, (__bridge void *)(self));
-    }
-}
-
-- (void)closeFile {
-    if (_flvWriter) {
-        flv_writer_destroy(_flvWriter);
-        _flvWriter = nil;
-    }
-}
-
 @end
 
-
-static int _flv_muxer_handler (void* param, int type, const void* data, size_t bytes, uint32_t timestamp) {
-    
-    NXManager *manager = (__bridge NXManager *)(param);
-    
-    if (!manager->_flvWriter) {
-        
-        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"video.flv"];
-        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-        [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
-        
-        NSLog(@"path = %@",path);
-        manager->_flvWriter = flv_writer_create1([path cStringUsingEncoding:NSUTF8StringEncoding], 1, 1);
-        //TODO: flv metaData
-        
-//        struct flv_metadata_t metaData = (struct flv_metadata_t) {
-//            .audiocodecid = 10,
-//            .audiosamplerate = 48000,
-//            .audiosamplesize = 16,
-//            .audiodatarate = 96000,
-//            .stereo = 0,
-//    
-//            .videocodecid = 7,
-//            .duration = 60,
-//        };
-//        flv_muxer_metadata(manager->_muxer, &metaData);
-    }
-    
-    flv_writer_input(manager->_flvWriter, type, data, bytes, timestamp);
-    
-    return 0;
-}
