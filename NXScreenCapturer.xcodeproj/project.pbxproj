@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8610415429F12150005DB656 /* NXManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8610415329F12150005DB656 /* NXManager.mm */; };
+		8610E53B2A49B6980075A825 /* amf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8610E5392A49B6980075A825 /* amf.cpp */; };
 		8645DB9929F00567007672F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8645DB9829F00567007672F1 /* AppDelegate.swift */; };
 		8645DB9B29F00567007672F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8645DB9A29F00567007672F1 /* SceneDelegate.swift */; };
 		8645DB9D29F00567007672F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8645DB9C29F00567007672F1 /* ViewController.swift */; };
@@ -51,6 +52,8 @@
 		8610415229F12150005DB656 /* NXManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NXManager.h; sourceTree = "<group>"; };
 		8610415329F12150005DB656 /* NXManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NXManager.mm; sourceTree = "<group>"; };
 		8610415829F123B2005DB656 /* NXScreenCapturer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NXScreenCapturer-Bridging-Header.h"; sourceTree = "<group>"; };
+		8610E5392A49B6980075A825 /* amf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = amf.cpp; sourceTree = "<group>"; };
+		8610E53A2A49B6980075A825 /* amf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amf.h; sourceTree = "<group>"; };
 		8645DB9529F00567007672F1 /* NXScreenCapturer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NXScreenCapturer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8645DB9829F00567007672F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8645DB9A29F00567007672F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -344,6 +347,8 @@
 		86546A792A44A8A000776C60 /* libflv */ = {
 			isa = PBXGroup;
 			children = (
+				8610E5392A49B6980075A825 /* amf.cpp */,
+				8610E53A2A49B6980075A825 /* amf.h */,
 				86546A7A2A44A8A000776C60 /* flv_tag.h */,
 				86546A7B2A44A8A000776C60 /* aac.h */,
 				86546A7C2A44A8A000776C60 /* avc.h */,
@@ -707,6 +712,7 @@
 				86546A8B2A44A8A000776C60 /* get_bits.cpp in Sources */,
 				86514A5E29F26B0500258D18 /* NXLiveAudioFrame.m in Sources */,
 				86514A6829F2704700258D18 /* TSSpeexConverter.m in Sources */,
+				8610E53B2A49B6980075A825 /* amf.cpp in Sources */,
 				86514A7229F28CA700258D18 /* TPCircularBuffer+AudioBufferList.c in Sources */,
 				865F2D9729F02DF1005E5ED1 /* TSBitrateHelper.cpp in Sources */,
 				86546A892A44A8A000776C60 /* put_bits.cpp in Sources */,

@@ -37,14 +37,14 @@ static float kSampleRate = 48000.0;
     
     bool ret = TPCircularBufferProduceBytes(&_buffer, data, length);
     
-    NSLog(@"write length = %d, ret = %d", length, ret);
+//    NSLog(@"write length = %d, ret = %d", length, ret);
 
     
     if (!ret) {
         
         uint32_t availableBytes;
         TPCircularBufferHead(&_buffer, &availableBytes);
-        NSLog(@"write availableBytes = %d, length = %d", availableBytes, length);
+//        NSLog(@"write availableBytes = %d, length = %d", availableBytes, length);
     }
     
     assert(ret);
@@ -59,7 +59,7 @@ static float kSampleRate = 48000.0;
         if (abs((int)_timestamp + diff - (int)timestamp) > 5) {
             //TODO: fix timestamp
             _timestamp = timestamp - diff;
-            NSLog(@"fix timestamp, diff = %d", diff);
+//            NSLog(@"fix timestamp, diff = %d", diff);
         }
     }
 }
@@ -68,7 +68,7 @@ static float kSampleRate = 48000.0;
     uint32_t availableBytes = 0;
     void *p = TPCircularBufferTail(&_buffer, &availableBytes);
     
-    NSLog(@"read, availableBytes = %d, length = %d", availableBytes, length);
+//    NSLog(@"read, availableBytes = %d, length = %d", availableBytes, length);
     if (length > availableBytes) {
         return NO;
     }
@@ -84,7 +84,7 @@ static float kSampleRate = 48000.0;
             *timestamp = _timestamp;
         }
         uint32_t ts = sampleCount / kSampleRate * 1000;
-        NSLog(@"ts ==== %d", ts);
+//        NSLog(@"ts ==== %d", ts);
         _timestamp += ts;
     }
     return YES;

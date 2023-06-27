@@ -43,11 +43,13 @@ class ViewController: UIViewController {
         
         self.player = player
         
+        NXManager.shared().start()
     }
     
     @IBAction func onStopButtonClick(_ sender: Any) {
         stopScreenCapture()
         self.player?.stop()
+        NXManager.shared().stop()
     }
     
     func startScreenCapture() {
@@ -57,8 +59,6 @@ class ViewController: UIViewController {
             if !RPScreenRecorder.shared().isMicrophoneEnabled {
                 print("=====not enable mic")
             }
-            
-            
             switch sampleBufferType {
             case .video:
                 self .handleVideoSampleBuffer(sampleBuffer)

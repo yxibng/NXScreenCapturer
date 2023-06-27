@@ -46,11 +46,6 @@ static void writeAac(uint8_t * aac, int length) {
     fwrite(aac, 1, length, m_pOutFile);
 }
 
-
-
-
-static int _flv_muxer_handler (void* param, int type, const void* data, size_t bytes, uint32_t timestamp);
-
 @interface NXManager ()<TSHardwareEncoderDelegate, NXAudioMixerDelegate, NXAudioEncodingDelegate>
 {
     @public
@@ -63,6 +58,9 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     BOOL _hasAvccHeaderWriten;
     
     std::shared_ptr<nx::FlvMuxer> _flvMuxer;
+    
+    bool _hasAudio;
+    bool _hasVideo;
 }
 
 @property (nonatomic, strong) TSHardwareEncoder *videoEncoder;
@@ -110,14 +108,6 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
         audioConfig.audioBitRate = NXLiveAudioBitRate_96Kbps;
         _audioEncoder = [[NXHardwareAudioEncoder alloc] initWithAudioStreamConfiguration:audioConfig];
         [_audioEncoder setDelegate:self];
-        
-        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"video.flv"];
-        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-        [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
-        
-        NSLog(@"path = %@",path);
-        
-        _flvMuxer = std::make_shared<nx::FlvMuxer>([path cStringUsingEncoding:NSUTF8StringEncoding], true, false);
     }
     return self;
 }
@@ -125,22 +115,37 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
 
 
 - (void)handleVideoPixelBuffer:(CVPixelBufferRef)pixelBuffer timestamp:(int64_t)timestamp {
+    if (!_hasVideo) return;
     [self.videoEncoder encodePixelBuffer:pixelBuffer timestamp:timestamp];
+}
+
+- (void)start {
+    
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"video.flv"];
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
+    
+    NSLog(@"path = %@",path);
+    
+    _hasAudio = true;
+    _hasVideo = true;
+    _flvMuxer = std::make_shared<nx::FlvMuxer>([path cStringUsingEncoding:NSUTF8StringEncoding], _hasAudio, _hasVideo);
 }
 
 
 - (void)stop {
-    
+    _flvMuxer.reset();
 }
-
 
 #pragma mark -
 
 - (void)handleAppAudioBuffer:(CMSampleBufferRef)appAudioBuffer {
+    if (!_hasAudio) return;
     [self.audioMixer  handleAppBuffer:appAudioBuffer];
 }
 
 - (void)handleMicAudioBuffer:(CMSampleBufferRef)micAudioBuffer {
+    if (!_hasAudio) return;
     [self.audioMixer handleMicBuffer:micAudioBuffer];
 }
 
@@ -152,8 +157,6 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
 }
 
 - (void)dequeueAndEncodeAudio {
-    
-    
     const int bufferSize = 1024 * 2;
     uint8_t buffer[bufferSize];
     memset(buffer, 0, bufferSize);
@@ -173,8 +176,7 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
 }
 
 - (void)audioEncoder:(id<NXAudioEncoding>)encoder audioFrame:(NXLiveAudioFrame *)frame {
-    
-    NSLog(@"%s, ts = %llu", __func__, frame.timestamp);
+//    NSLog(@"%s, ts = %llu", __func__, frame.timestamp);
     
     uint8_t adtsHeader[7] = {0};
     nx::adts_header header(nx::adts_header::Profile::LC, 48000, 1, (int)frame.data.length);
@@ -189,7 +191,8 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     assert(pts >= 0);
     
     writeAac((uint8_t *)data.bytes, data.length);
-    NSLog(@"audio pts = %lld", pts);
+//    NSLog(@"audio pts = %lld", pts);
+    if (!_flvMuxer) return;
     _flvMuxer->mux_aac((uint8_t *)data.bytes, data.length, (uint32_t)pts);
 }
 
@@ -200,10 +203,10 @@ static int _flv_muxer_handler (void* param, int type, const void* data, size_t b
     if (!_startTimestamp) {
         _startTimestamp = timestamp;
     }
-    
-//    NSLog(@"video timestamp = %lld", timestamp);
-    
+    if (!_flvMuxer) return;
     int64_t pts = timestamp - _startTimestamp;
+    assert(pts >= 0);
+    if (pts < 0) pts = 0;
     _flvMuxer->mux_avc(data, length, (uint32_t)pts, (uint32_t)pts, iskey);
     
     
