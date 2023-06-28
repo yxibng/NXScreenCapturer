@@ -21,8 +21,6 @@
 #include <memory>
 
 
-
-
 static void writeH264(uint8_t * h264, int length) {
     static FILE* m_pOutFile = NULL;
     if (!m_pOutFile) {
@@ -49,7 +47,6 @@ static void writeAac(uint8_t * aac, int length) {
 @interface NXManager ()<TSHardwareEncoderDelegate, NXAudioMixerDelegate, NXAudioEncodingDelegate>
 {
     @public
-    void *_flvWriter;
     int64_t _startVideoTimestamp;
     uint64_t _startAudioTimestamp;
     
@@ -58,6 +55,7 @@ static void writeAac(uint8_t * aac, int length) {
     BOOL _hasAvccHeaderWriten;
     
     std::shared_ptr<nx::FlvMuxer> _flvMuxer;
+    std::shared_ptr<nx::FlvFileWriter> _flvFileWriter;
     
     bool _hasAudio;
     bool _hasVideo;
@@ -126,10 +124,12 @@ static void writeAac(uint8_t * aac, int length) {
     [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
     
     NSLog(@"path = %@",path);
+
+    _flvFileWriter = std::make_shared<nx::FlvFileWriter>([path cStringUsingEncoding:NSUTF8StringEncoding], (__bridge void *)self);
     
     _hasAudio = true;
     _hasVideo = true;
-    _flvMuxer = std::make_shared<nx::FlvMuxer>([path cStringUsingEncoding:NSUTF8StringEncoding], _hasAudio, _hasVideo);
+    _flvMuxer = std::make_shared<nx::FlvMuxer>( _hasAudio, _hasVideo, _flvFileWriter);
 }
 
 
@@ -205,11 +205,9 @@ static void writeAac(uint8_t * aac, int length) {
     }
     if (!_flvMuxer) return;
     int64_t pts = timestamp - _startTimestamp;
-    assert(pts >= 0);
     if (pts < 0) pts = 0;
+    assert(pts >= 0);
     _flvMuxer->mux_avc(data, length, (uint32_t)pts, (uint32_t)pts, iskey);
-    
-    
 #if 0
     writeH264(data, length);
 #endif
